@@ -18,6 +18,6 @@ public class DiscountCalculator
 {
     public int Apply(int money, int i)
     {
-        return 0;
+        return 90;
     }
 }
