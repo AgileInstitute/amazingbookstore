@@ -1,3 +1,4 @@
+using AmazingBookstore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AmazingBookstoreTests;
@@ -8,16 +9,8 @@ public class DiscountCalculatorTests
     [TestMethod]
     public void GivenMoney_WhenGivenDiscount_ThenDiscountIsApplied()
     {
-        var money = 100;
+        var money = new Money(100, 0);
         var calculator = new DiscountCalculator();
-        Assert.AreEqual(90, calculator.Apply(money, 10));
-    }
-}
-
-public class DiscountCalculator
-{
-    public int Apply(int money, int i)
-    {
-        return 90;
+        Assert.AreEqual(new Money(90, 0), calculator.Apply(money, 10));
     }
 }
