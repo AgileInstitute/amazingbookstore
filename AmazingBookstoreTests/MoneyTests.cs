@@ -59,8 +59,14 @@ public class MoneyTests
     {
         var money1 = new Money(2, 50);
         var money2 = new Money(3, 25);
-
         Assert.AreEqual(new Money(5, 75), money1 + money2);
+    }
+
+    [TestMethod]
+    public void CanMultiplyMoneyByLong()
+    {
+        var money = new Money(2, 50);
+        Assert.AreEqual(new Money(5, 0), money * 2L);
     }
 
     [TestMethod]
@@ -86,5 +92,36 @@ public class MoneyTests
         var money = new Money(0, 0);
         
         Assert.IsFalse(money.Equals(null));
+    }
+    
+    [TestMethod]
+    public void MoneyCanBeSubtracted()
+    {
+        var money1 = new Money(1, 0);
+        var money2 = new Money(0, 49);
+
+        var expectedAmount = new Money(0, 51);
+        
+        Assert.AreEqual(expectedAmount, money1 - money2);
+    }
+    
+    [TestMethod]
+    public void MoneyCanBeDividedByLong()
+    {
+        var money = new Money(1, 0);
+        var divisor = 2;
+
+        var expectedAmount = new Money(0, 50);
+        
+        Assert.AreEqual(expectedAmount, money / divisor);
+    }
+    
+    [TestMethod]
+    public void MoneyCannotBeDividedByZero()
+    {
+        var money = new Money(1, 0);
+        var divisor = 0;
+
+        Assert.ThrowsException<DivideByZeroException>(() => money / divisor);
     }
 }

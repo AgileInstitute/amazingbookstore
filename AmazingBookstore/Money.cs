@@ -49,4 +49,19 @@ public class Money : IEquatable<Money>
     {
         return new Money(money1._normalizedDollars + money2._normalizedDollars);
     }
+
+    public static Money operator *(Money money, long multiple)
+    {
+        return new Money(money._normalizedDollars * multiple);
+    }
+    
+    public static Money operator -(Money money1, Money money2)
+    {
+        return new Money(money1._normalizedDollars - money2._normalizedDollars);
+    }
+    
+    public static Money operator /(Money money, long divisor)
+    {
+        return new Money(money._normalizedDollars / divisor);
+    }
 }

@@ -2,9 +2,16 @@
 {
     public class DiscountCalculator
     {
-        public Money Apply(Money money, int discount)
+        public object ApplyMoneyDiscount(Money money, Money moneyDiscount)
         {
-            throw new NotImplementedException();
+            return money - moneyDiscount;
+        }
+
+        public Money ApplyPercentageDiscount(Money money, int percentDiscount)
+        {
+            if (percentDiscount == 0) return money;
+            
+            return money - ((money * percentDiscount) / 100);
         }
     }
 }
