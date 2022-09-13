@@ -62,4 +62,29 @@ public class MoneyTests
 
         Assert.AreEqual(new Money(5, 75), money1 + money2);
     }
+
+    [TestMethod]
+    public void ItemsWithSameDataHaveSameHashCode()
+    {
+        var money1 = new Money(321, 32);
+        var money2 = new Money(321, 32);
+        
+        Assert.AreEqual(money1.GetHashCode(), money2.GetHashCode());
+    }
+
+    [TestMethod]
+    public void MoneyIsNotEqualToANonMoney()
+    {
+        var money = new Money(1, 1);
+        
+        Assert.IsFalse(money.Equals("$1.01"));
+    }
+    
+    [TestMethod]
+    public void MoneyIsNotEqualToNull()
+    {
+        var money = new Money(0, 0);
+        
+        Assert.IsFalse(money.Equals(null));
+    }
 }
